@@ -82,33 +82,6 @@ class Screen:
             if not skip_dot:
                 pygame.draw.circle(self.screen, 'White', (x, y), 1)
 
-    def draw_path(self, path):
-        if not path:
-            return
-        
-        # Define starting point for circles
-        start_x = 300
-        start_y = 30
-        spacing = 80  # Space between circles
-
-        for i, text in enumerate(path):
-            # Calculate the position for each circle
-            point = (start_x, start_y + i * spacing)
-
-            # Draw a circle around the point
-            pygame.draw.circle(self.screen, CIRCLE_COLOR, point, 30)  # Increased radius for text visibility
-            font = pygame.font.SysFont('arabic.ttf', 30)
-            # Render the text inside the circle
-            rendered_text = font.render(text, False, 'White')
-            text_rect = rendered_text.get_rect(center=point)
-            self.screen.blit(rendered_text, text_rect)
-
-            # Draw lines to the next point
-            if i < len(path) - 1:
-                next_point = (start_x, start_y + (i + 1) * spacing)
-                # Draw a vertical line to the next point
-                pygame.draw.line(self.screen, LINE_COLOR[i % len(LINE_COLOR)], point, next_point, LINE_WIDTH)
-
     def buttons(self):
         for i, rect in enumerate(self.rectangles):
             pygame.draw.rect(self.screen, self.LINE_COLOR[i], rect, 3)
