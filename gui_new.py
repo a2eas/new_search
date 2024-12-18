@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from graph import *
+
 
 pygame.init()
 
